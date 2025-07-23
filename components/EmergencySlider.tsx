@@ -15,7 +15,7 @@
  * @version 2.0
  */
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 
 /**
  * Интерфейс данных для карточки экстренной помощи
@@ -94,12 +94,6 @@ interface EmergencySliderProps {
  */
 export function EmergencySlider({ onCardClick }: EmergencySliderProps) {
   // === СОСТОЯНИЯ КОМПОНЕНТА ===
-  
-  /**
-   * Индекс текущей активной карточки (не используется в текущей версии, 
-   * но сохранен для возможного будущего функционала с индикаторами)
-   */
-  const [currentIndex, setCurrentIndex] = useState(0);
   
   /**
    * Флаг состояния перетаскивания
@@ -192,6 +186,7 @@ export function EmergencySlider({ onCardClick }: EmergencySliderProps) {
    * @param e - событие касания
    */
   const handleTouchStart = (e: React.TouchEvent) => {
+    if (!e.touches || !e.touches[0] || !sliderRef.current) return;
     setIsDragging(true);
     
     // Используем первое касание из массива touches
@@ -208,7 +203,7 @@ export function EmergencySlider({ onCardClick }: EmergencySliderProps) {
    * @param e - событие движения касания
    */
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging || !sliderRef.current) return;
+    if (!isDragging || !sliderRef.current || !e.touches || !e.touches[0]) return;
     
     // Вычисляем новую позицию на основе движения пальца
     const x = e.touches[0].pageX - (sliderRef.current.offsetLeft || 0);
@@ -261,7 +256,7 @@ export function EmergencySlider({ onCardClick }: EmergencySliderProps) {
    * @param props.index - индекс карточки в массиве (для потенциального функционала)
    * @returns JSX элемент карточки
    */
-  const EmergencyCard = ({ card, index }: { card: EmergencyCard; index: number }) => (
+  const EmergencyCard = ({ card }: { card: EmergencyCard }) => (
     <button
       onClick={(e) => handleCardClick(card.id, e)}
       className="grid-cols-[max-content] grid-rows-[max-content] inline-grid place-items-start relative shrink-0 hover:opacity-80 transition-opacity duration-200 active:scale-95"
@@ -329,11 +324,10 @@ export function EmergencySlider({ onCardClick }: EmergencySliderProps) {
           Итерируем по массиву карточек и рендерим каждую как отдельный компонент.
           Каждая карточка получает уникальный ключ для оптимизации React рендеринга.
         */}
-        {emergencyCards.map((card, index) => (
+        {emergencyCards.map((card) => (
           <EmergencyCard 
             key={card.id}        // Уникальный ключ для React
             card={card}          // Данные карточки
-            index={index}        // Индекс для потенциального функционала
           />
         ))}
       </div>
