@@ -1,7 +1,5 @@
 import svgPaths from "./svg-7ubyqgxeh9";
-import { MoodSlider } from "../components/MoodSlider";
 import { EmergencySlider } from "../components/EmergencySlider";
-import HayouBlock from "../components/HayouBlock";
 
 function Light() {
   return (
@@ -382,146 +380,6 @@ function UserFrameInfoBlock() {
   );
 }
 
-function InfoIcon24() {
-  const handleInfoClick = () => {
-    console.log("Info icon clicked");
-    // Здесь можно добавить логику для показа модального окна или подсказки
-    alert(
-      "Здесь будет информация о том, как отслеживать своё настроение и самочувствие",
-    );
-  };
-
-  return (
-    <button
-      onClick={handleInfoClick}
-      className="relative shrink-0 size-6 hover:opacity-70 transition-opacity duration-200 active:scale-95 cursor-pointer"
-      data-name="Info_icon_24"
-      aria-label="Информация о настроении"
-    >
-      <svg
-        className="block size-full"
-        fill="none"
-        preserveAspectRatio="none"
-        viewBox="0 0 24 24"
-      >
-        <g id="Info_icon_24">
-          <path
-            d={svgPaths.pace200}
-            id="Vector"
-            stroke="var(--stroke-0, #2D2B2B)"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-          />
-          <path
-            d="M12 16V12"
-            id="Vector_2"
-            stroke="var(--stroke-0, #2D2B2B)"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-          />
-          <path
-            d="M12 8H12.01"
-            id="Vector_3"
-            stroke="var(--stroke-0, #2D2B2B)"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-          />
-        </g>
-      </svg>
-    </button>
-  );
-}
-
-function InfoGroup() {
-  return (
-    <div
-      className="box-border content-stretch flex flex-row items-center justify-between p-0 relative shrink-0 w-full"
-      data-name="Info_group"
-    >
-      <div className="font-['Kreon:Regular',_sans-serif] font-normal leading-[0] relative shrink-0 text-[#313131] text-[24px] text-left text-nowrap">
-        <p className="block leading-[0.8] whitespace-pre">
-          How are you?
-        </p>
-      </div>
-      <InfoIcon24 />
-    </div>
-  );
-}
-
-function ImFeelingDown() {
-  return (
-    <div
-      className="h-[26px] relative shrink-0 w-full"
-      data-name="I\'m feeling down..."
-    >
-      <div className="absolute font-['Kreon:Regular',_sans-serif] font-normal inset-0 leading-[0] text-[#313131] text-[32px] text-left">
-        <p className="block leading-[0.8]">{`I'm neutral`}</p>
-      </div>
-    </div>
-  );
-}
-
-function Frame40() {
-  return (
-    <div className="bg-[#2d2b2b] h-[30px] relative rounded-xl shrink-0 w-full">
-      <div
-        className="absolute bg-[#e1ff00] h-[30px] left-0 rounded-xl top-0 w-[186px]"
-        data-name="Block"
-      >
-        <div className="absolute border-2 border-[#2d2b2b] border-solid inset-0 pointer-events-none rounded-xl" />
-      </div>
-    </div>
-  );
-}
-
-function StartMining() {
-  return (
-    <div
-      className="bg-[#2d2b2b] h-[46px] relative rounded-xl shrink-0 w-full"
-      data-name="Start Mining"
-    >
-      <div className="flex flex-row items-center justify-center relative size-full">
-        <div className="box-border content-stretch flex flex-row gap-2.5 h-[46px] items-center justify-center px-[126px] py-[15px] relative w-full">
-          <div className="font-['PT_Sans:Bold',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#e1ff00] text-[15px] text-center text-nowrap tracking-[-0.43px]">
-            <p className="adjustLetterSpacing block leading-[16px] whitespace-pre">
-              Send
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function Frame21() {
-  return (
-    <div className="absolute box-border content-stretch flex flex-col gap-5 items-start justify-start left-4 p-0 top-3 w-[319px]">
-      <InfoGroup />
-      <MoodSlider initialValue={4} />
-      <div className="font-['PT_Sans:Regular',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#333333] text-[20px] text-left w-full">
-        <p className="block leading-none">{`Check in with yourself — it's the first step to self-care! Do it everyday.`}</p>
-      </div>
-      <StartMining />
-    </div>
-  );
-}
-
-function Group17() {
-  return (
-    <div className="absolute bottom-0 contents left-1/2 top-0 translate-x-[-50%]">
-      <div className="absolute bg-[#e1ff00] inset-0 rounded-xl" />
-      <Frame21 />
-    </div>
-  );
-}
-
-function HayouBlockWrapper() {
-  return <HayouBlock />;
-}
-
 function Frame43() {
   return (
     <div className="[grid-area:1_/_1] box-border content-stretch flex flex-row h-[11px] items-center justify-between ml-5 mt-[55px] p-0 relative w-[311px]">
@@ -763,7 +621,7 @@ function ContentBlockThemeCard1() {
 function ThemeCardNarrow1() {
   const handleCardClick = () => {
     console.log("Clicked: Angry theme card");
-    // Здесь можн�� добавить логику для перехода к теме Angry
+    // Здесь можно добавить логику для перехода к теме Angry
   };
 
   return (
@@ -1168,114 +1026,6 @@ function Frame25() {
   );
 }
 
-function Emergency05() {
-  return (
-    <div
-      className="grid-cols-[max-content] grid-rows-[max-content] inline-grid place-items-start relative shrink-0"
-      data-name="Emergency_05"
-    >
-      <div className="[grid-area:1_/_1] bg-[#e1ff00] h-[168px] ml-0 mt-0 rounded-xl w-[294px]" />
-      <div className="[grid-area:1_/_1] font-['Kreon:Regular',_sans-serif] font-normal leading-[0] ml-5 mt-5 relative text-[#313131] text-[24px] text-left w-[248px]">
-        <p className="block leading-[0.8]">
-          Emergency breathing patterns
-        </p>
-      </div>
-      <div className="[grid-area:1_/_1] font-['PT_Sans:Regular',_sans-serif] leading-[0] ml-[19px] mt-[78px] not-italic relative text-[#333333] text-[20px] text-left w-[249px]">
-        <p className="block leading-none">{`Check in with yourself — it's the first step to self-care! Do it everyday.`}</p>
-      </div>
-    </div>
-  );
-}
-
-function Emergency04() {
-  return (
-    <div
-      className="grid-cols-[max-content] grid-rows-[max-content] inline-grid place-items-start relative shrink-0"
-      data-name="Emergency_04"
-    >
-      <div className="[grid-area:1_/_1] bg-[#e1ff00] h-[168px] ml-0 mt-0 rounded-xl w-[294px]" />
-      <div className="[grid-area:1_/_1] font-['Kreon:Regular',_sans-serif] font-normal leading-[0] ml-5 mt-5 relative text-[#313131] text-[24px] text-left w-[248px]">
-        <p className="block leading-[0.8]">
-          Cold diving reflex
-        </p>
-      </div>
-      <div className="[grid-area:1_/_1] font-['PT_Sans:Regular',_sans-serif] leading-[0] ml-[19px] mt-[59px] not-italic relative text-[#333333] text-[20px] text-left w-[249px]">
-        <p className="block leading-none">{`Check in with yourself — it's the first step to self-care! Do it everyday.`}</p>
-      </div>
-    </div>
-  );
-}
-
-function Emergency03() {
-  return (
-    <div
-      className="grid-cols-[max-content] grid-rows-[max-content] inline-grid place-items-start relative shrink-0"
-      data-name="Emergency_03"
-    >
-      <div className="[grid-area:1_/_1] bg-[#e1ff00] h-[168px] ml-0 mt-0 rounded-xl w-[294px]" />
-      <div className="[grid-area:1_/_1] font-['Kreon:Regular',_sans-serif] font-normal leading-[0] ml-5 mt-5 relative text-[#313131] text-[24px] text-left w-[248px]">
-        <p className="block leading-[0.8]">
-          Intense short bursts
-        </p>
-      </div>
-      <div className="[grid-area:1_/_1] font-['PT_Sans:Regular',_sans-serif] leading-[0] ml-[19px] mt-[59px] not-italic relative text-[#333333] text-[20px] text-left w-[249px]">
-        <p className="block leading-none">{`Check in with yourself — it's the first step to self-care! Do it everyday.`}</p>
-      </div>
-    </div>
-  );
-}
-
-function Emergency02() {
-  return (
-    <div
-      className="grid-cols-[max-content] grid-rows-[max-content] inline-grid place-items-start relative shrink-0"
-      data-name="Emergency_02"
-    >
-      <div className="[grid-area:1_/_1] bg-[#e1ff00] h-[168px] ml-0 mt-0 rounded-xl w-[294px]" />
-      <div className="[grid-area:1_/_1] font-['Kreon:Regular',_sans-serif] font-normal leading-[0] ml-5 mt-5 relative text-[#313131] text-[24px] text-left w-[248px]">
-        <p className="block leading-[0.8]">
-          Progressive muscle relaxation
-        </p>
-      </div>
-      <div className="[grid-area:1_/_1] font-['PT_Sans:Regular',_sans-serif] leading-[0] ml-[19px] mt-[78px] not-italic relative text-[#333333] text-[20px] text-left w-[249px]">
-        <p className="block leading-none">{`Check in with yourself — it's the first step to self-care! Do it everyday.`}</p>
-      </div>
-    </div>
-  );
-}
-
-function Emergency01() {
-  return (
-    <div
-      className="grid-cols-[max-content] grid-rows-[max-content] inline-grid place-items-start relative shrink-0"
-      data-name="Emergency_01"
-    >
-      <div className="[grid-area:1_/_1] bg-[#e1ff00] h-[168px] ml-0 mt-0 rounded-xl w-[294px]" />
-      <div className="[grid-area:1_/_1] font-['Kreon:Regular',_sans-serif] font-normal leading-[0] ml-5 mt-5 relative text-[#313131] text-[24px] text-left w-[248px]">
-        <p className="block leading-[0.8]">Sensory grounding</p>
-      </div>
-      <div className="[grid-area:1_/_1] font-['PT_Sans:Regular',_sans-serif] leading-[0] ml-[19px] mt-[59px] not-italic relative text-[#333333] text-[20px] text-left w-[249px]">
-        <p className="block leading-none">{`Check in with yourself — it's the first step to self-care! Do it everyday.`}</p>
-      </div>
-    </div>
-  );
-}
-
-function SliderEmergency() {
-  return (
-    <div
-      className="box-border content-stretch flex flex-row gap-[15px] items-center justify-start leading-[0] p-0 relative shrink-0"
-      data-name="Slider_emergency"
-    >
-      <Emergency05 />
-      <Emergency04 />
-      <Emergency03 />
-      <Emergency02 />
-      <Emergency01 />
-    </div>
-  );
-}
-
 function EmergencyBlock() {
   /**
    * Обработчик кликов по карточкам экстренной помощи
@@ -1473,7 +1223,6 @@ function Frame41() {
   return (
     <div className="absolute box-border content-stretch flex flex-col gap-[60px] items-start justify-start left-[21px] p-0 top-[109px] w-[351px]">
       <UserFrameInfoBlock />
-      <HayouBlockWrapper />
       <ActivityBlock />
       <Frame25 />
       <EmergencyBlock />

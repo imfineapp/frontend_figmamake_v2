@@ -39,6 +39,15 @@ declare global {
   }
 }
 
+declare global {
+  interface ImportMeta {
+    env: {
+      MODE: string;
+      [key: string]: any;
+    };
+  }
+}
+
 // === ERROR BOUNDARY КОМПОНЕНТ ===
 class ErrorBoundary extends React.Component<
   { children: React.ReactNode },
@@ -57,7 +66,7 @@ class ErrorBoundary extends React.Component<
     console.error('Telegram Mini App Error:', error, errorInfo);
     
     // В продакшене здесь можно отправить ошибку в сервис мониторинга
-    if (process.env.NODE_ENV === 'production') {
+    if (typeof import.meta.env !== 'undefined' && import.meta.env.MODE === 'production') {
       // TODO: Отправить ошибку в систему мониторинга
     }
   }
@@ -116,7 +125,7 @@ if (document.readyState === 'loading') {
 }
 
 // === ЛОГИРОВАНИЕ ДЛЯ ОТЛАДКИ ===
-if (process.env.NODE_ENV === 'development') {
+if (import.meta.env.MODE === 'development') {
   console.log('🚀 Menhausen Telegram Mini App starting...');
   console.log('📱 Telegram WebApp available:', !!window.Telegram?.WebApp);
   console.log('🎨 Theme:', window.Telegram?.WebApp?.colorScheme || 'unknown');

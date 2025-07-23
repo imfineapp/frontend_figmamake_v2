@@ -42,15 +42,12 @@
     "sourceMap": true
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx"
+    "src",
+    "**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "dist",
-    "build"
+    "vite.config.ts"
   ],
   "references": [
     {
