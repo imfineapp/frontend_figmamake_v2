@@ -1,36 +1,44 @@
 # PROJECT BRIEF: Menhausen Telegram Mini App
 
 ## PROJECT OVERVIEW
-**Name:** menhausen-telegram-mini-app
-**Type:** React TypeScript application
-**Framework:** React 18 with Vite
-**Styling:** Tailwind CSS v4
-**Platform:** Telegram Mini App
+**Name:** menhausen-telegram-mini-app  
+**Type:** Telegram Mini App (React TypeScript application)  
+**Framework:** Next.js (React 18+), Vite, Tailwind CSS v4  
+**Platform:** Telegram Mini App, Netlify (Mini App), Firebase Hosting (CMS)  
+**Business Goal:**  
+- Provide accessible, secure, and engaging mental wellness support for men 25–45 in Russian-speaking regions and globally.
+- Empower users with daily check-ins, interactive cards, and privacy-first design.
+- Enable phased rollout of payments, badges, CMS, offline, and Web3 features.
 
-## CURRENT STATE
-- Multi-page onboarding application
-- 3 main pages: Onboarding, Survey, Main
-- React 18 with TypeScript
-- Tailwind CSS v4 for styling
-- Vite build system
+## SCOPE & PHASES
+- **Phase 1 (MVP):** Onboarding, daily check-ins, card system, i18n, client-side encryption
+- **Phase 2:** Payments (free/basic/premium tiers, Telegram Payments API)
+- **Phase 3:** Badges & gamification
+- **Phase 4:** CMS for card management
+- **Phase 5:** Offline functionality
+- **Phase 6:** Web3/TON integration (future)
+
+## STAKEHOLDERS & USERS
+- **Primary Users:** Men 25–45, Russian-speaking, Telegram users, low technical barrier
+- **Stakeholders:** Product owner, psychology team, editors, developers, support
+
+## SUCCESS CRITERIA (MVP)
+- >70% onboarding completion
+- Daily check-in compliance
+- Error-free card play
+- i18n works for all content
+- Encryption does not break UX
 
 ## TECHNICAL STACK
-- React 18.2.0
-- TypeScript 5.2.2
-- Vite 7.0.5
-- Tailwind CSS 4.0.0
-- Framer Motion 10.16.4
-- React Hook Form 7.55.0
-
-## PROJECT STRUCTURE
-- Main App.tsx (870 lines)
-- Components directory with UI components
-- Imports directory with page components
-- Public directory for static assets
-- Memory Bank system for task tracking
+- Next.js, React 18+, Vite, Tailwind CSS v4
+- TypeScript
+- Firebase (Firestore, Functions, Hosting)
+- i18n (auto-detect via Telegram)
+- CryptoJS (AES-256-GCM)
+- Charting library (mood graph)
+- Telegram WebApp SDK, Payments API
 
 ## DEVELOPMENT STATUS
-- Active development
-- Memory Bank system initialized
-- Ready for task implementation
+- Memory Bank Level 4 plan in place
+- Ready for architectural planning and creative phase
 
