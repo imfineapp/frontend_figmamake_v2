@@ -15,7 +15,8 @@
  * @version 2.0
  */
 
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
+import { useI18n } from '../src/hooks/useI18n';
 
 /**
  * Интерфейс данных для карточки экстренной помощи
@@ -93,6 +94,8 @@ interface EmergencySliderProps {
  * @returns JSX элемент горизонтального слайдера
  */
 export function EmergencySlider({ onCardClick }: EmergencySliderProps) {
+  const { t } = useI18n();
+
   // === СОСТОЯНИЯ КОМПОНЕНТА ===
   
   /**
@@ -264,7 +267,7 @@ export function EmergencySlider({ onCardClick }: EmergencySliderProps) {
         // Динамически отключаем pointer events во время перетаскивания
         pointerEvents: isDragging ? 'none' : 'auto' 
       }}
-      aria-label={`Техника экстренной помощи: ${card.title}`}
+      aria-label={card.title}
     >
       {/* === ФОН КАРТОЧКИ === */}
       {/* Желтый фон карточки с фиксированными размерами */}
@@ -316,7 +319,7 @@ export function EmergencySlider({ onCardClick }: EmergencySliderProps) {
         
         // === ACCESSIBILITY ===
         role="region"
-        aria-label="Слайдер техник экстренной помощи"
+        aria-label={t('emergency.title')}
         tabIndex={0}
       >
         {/* === РЕНДЕРИНГ КАРТОЧЕК === */}
