@@ -1,5 +1,6 @@
 import svgPaths from "./svg-7ubyqgxeh9";
 import { EmergencySlider } from "../components/EmergencySlider";
+import { useI18n } from "../src/hooks/useI18n";
 
 function Light() {
   return (
@@ -302,10 +303,11 @@ function Frame() {
 }
 
 function Frame30() {
+  const { t } = useI18n();
   return (
     <div className="box-border content-stretch flex flex-row items-start justify-between p-0 relative shrink-0 w-full">
       <div className="font-['Kreon:Regular',_sans-serif] font-normal leading-[0] relative shrink-0 text-[#e1ff00] text-[24px] text-left w-[164px]">
-        <p className="block leading-[0.8]">Hero #1275</p>
+        <p className="block leading-[0.8]">{t('profile.title', { defaultValue: 'Profile' })}</p>
       </div>
       <Frame />
     </div>
@@ -313,30 +315,28 @@ function Frame30() {
 }
 
 function UserAccountStatus() {
+  const { t } = useI18n();
   return (
     <div
       className="bg-[#e1ff00] box-border content-stretch flex flex-row h-[18px] items-center justify-center p-0 relative rounded-xl shrink-0 w-[69px]"
       data-name="User_account_status"
     >
       <div className="font-['PT_Sans:Bold',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#424040] text-[15px] text-center text-nowrap tracking-[-0.43px]">
-        <p className="adjustLetterSpacing block leading-[16px] whitespace-pre">
-          Premium
-        </p>
+        <p className="adjustLetterSpacing block leading-[16px] whitespace-pre">{t('profile.premium', { defaultValue: 'Premium' })}</p>
       </div>
     </div>
   );
 }
 
 function UserLevelAndPaidStatus() {
+  const { t } = useI18n();
   return (
     <div
       className="box-border content-stretch flex flex-row gap-5 items-center justify-start p-0 relative shrink-0"
       data-name="User level and paid status"
     >
       <div className="font-['PT_Sans:Regular',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#696969] text-[20px] text-left text-nowrap">
-        <p className="block leading-none whitespace-pre">
-          Level 25
-        </p>
+        <p className="block leading-none whitespace-pre">{t('profile.level', { defaultValue: 'Level {{count}}', count: 25 })}</p>
       </div>
       <UserAccountStatus />
     </div>
@@ -372,7 +372,7 @@ function UserFrameInfoBlock() {
       onClick={handleUserFrameClick}
       className="box-border content-stretch flex flex-row gap-5 items-center justify-start p-0 relative shrink-0 w-full cursor-pointer text-left"
       data-name="User frame info block"
-      aria-label="Профиль пользователя Hero #1275"
+      aria-label="Profile"
     >
       <UserAvatarFree />
       <UserInfoBlock />
@@ -396,23 +396,21 @@ function Frame43() {
 }
 
 function Frame27() {
+  const { t } = useI18n();
   return (
     <div className="[grid-area:1_/_1] box-border content-stretch flex flex-row font-['Kreon:Regular',_sans-serif] font-normal items-center justify-between ml-4 mt-4 p-0 relative text-[#e1ff00] text-[24px] text-nowrap w-[315px]">
       <div className="relative shrink-0 text-left">
-        <p className="block leading-[0.8] text-nowrap whitespace-pre">
-          Activity
-        </p>
+        <p className="block leading-[0.8] text-nowrap whitespace-pre">{t('home.activity.title', { defaultValue: 'Activity' })}</p>
       </div>
       <div className="relative shrink-0 text-right">
-        <p className="block leading-[0.8] text-nowrap whitespace-pre">
-          4 days
-        </p>
+        <p className="block leading-[0.8] text-nowrap whitespace-pre">{t('home.activity.days', { defaultValue: '{{count}} days', count: 4 })}</p>
       </div>
     </div>
   );
 }
 
 function ActivityBlock() {
+  const { t } = useI18n();
   return (
     <div
       className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0"
@@ -424,27 +422,17 @@ function ActivityBlock() {
       <Frame43 />
       <Frame27 />
       <div className="[grid-area:1_/_1] font-['PT_Sans:Regular',_sans-serif] ml-5 mt-[81px] not-italic relative text-[#ffffff] text-[20px] text-left w-[311px]">
-        <p className="block leading-none">
-          Only by doing exercises regularly will you achieve
-          results.
-        </p>
+        <p className="block leading-none">{t('home.activity.motivation', { defaultValue: 'Only by doing exercises regularly will you achieve results.' })}</p>
       </div>
     </div>
   );
 }
 
-function ThemeBlockBackground() {
+function ProgressThemeLabel() {
+  const { t } = useI18n();
   return (
-    <div
-      className="absolute inset-0"
-      data-name="theme_block_background"
-    >
-      <div
-        className="absolute bg-[rgba(217,217,217,0.04)] inset-0 rounded-xl"
-        data-name="Block"
-      >
-        <div className="absolute border border-[#505050] border-solid inset-0 pointer-events-none rounded-xl" />
-      </div>
+    <div className="absolute bottom-[20.833%] font-['PT_Sans:Bold',_sans-serif] leading-[0] left-[4.558%] not-italic right-[4.558%] text-[#696969] text-[16px] text-right top-[12.5%]">
+      <p className="block leading-none font-bold">{t('common.progress', { defaultValue: 'Progress' })}</p>
     </div>
   );
 }
@@ -459,36 +447,34 @@ function ProgressTheme() {
         className="absolute bg-[rgba(217,217,217,0.04)] inset-0 rounded-xl"
         data-name="Block"
       />
-      <div className="absolute bottom-[20.833%] font-['PT_Sans:Bold',_sans-serif] leading-[0] left-[4.558%] not-italic right-[4.558%] text-[#696969] text-[16px] text-right top-[12.5%]">
-        <p className="block leading-none font-bold">Progress</p>
-      </div>
+      <ProgressThemeLabel />
     </div>
   );
 }
 
 function UserAccountStatus1() {
+  const { t } = useI18n();
   return (
     <div
       className="bg-[#2d2b2b] box-border content-stretch flex flex-row h-[18px] items-center justify-center p-0 relative rounded-xl shrink-0 w-[62px]"
       data-name="User_account_status"
     >
       <div className="font-['PT_Sans:Bold',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#696969] text-[15px] text-center text-nowrap tracking-[-0.43px]">
-        <p className="adjustLetterSpacing block leading-[16px] whitespace-pre">
-          Free
-        </p>
+        <p className="adjustLetterSpacing block leading-[16px] whitespace-pre">{t('profile.free', { defaultValue: 'Free' })}</p>
       </div>
     </div>
   );
 }
 
 function MotivationAndStatusBlock() {
+  const { t } = useI18n();
   return (
     <div
       className="box-border content-stretch flex flex-row items-end justify-between p-0 relative shrink-0 w-full"
       data-name="Motivation_and_status_block"
     >
       <div className="font-['PT_Sans:Regular',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#696969] text-[16px] text-left w-[235px]">
-        <p className="block leading-none">Use 80% users</p>
+        <p className="block leading-none">{t('home.theme.usage', { defaultValue: 'Use 80% users' })}</p>
       </div>
       <UserAccountStatus1 />
     </div>
@@ -496,18 +482,17 @@ function MotivationAndStatusBlock() {
 }
 
 function ContentBlockThemeCard() {
+  const { t } = useI18n();
   return (
     <div
       className="absolute box-border content-stretch flex flex-col gap-2.5 items-start justify-start left-[13px] p-0 top-[17px] w-[327px]"
       data-name="Content_block_theme_card"
     >
       <div className="font-['Kreon:Regular',_sans-serif] font-normal leading-[0] relative shrink-0 text-[#e1ff00] text-[24px] text-left w-full">
-        <p className="block leading-[0.8]">Stress</p>
+        <p className="block leading-[0.8]">{t('survey.concerns.stress')}</p>
       </div>
       <div className="font-['PT_Sans:Regular',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[20px] text-left w-full">
-        <p className="block leading-none">
-          Some text about theme. Some text about theme.
-        </p>
+        <p className="block leading-none">{t('home.theme.description', { defaultValue: 'Some text about theme. Some text about theme.' })}</p>
       </div>
       <MotivationAndStatusBlock />
     </div>
@@ -533,7 +518,7 @@ function ThemeCardNarrow() {
   );
 }
 
-function ThemeBlockBackground1() {
+function ThemeBlockBackground() {
   return (
     <div
       className="absolute inset-0"
@@ -630,7 +615,7 @@ function ThemeCardNarrow1() {
       className="h-[154px] relative shrink-0 w-[351px] hover:opacity-80 transition-opacity duration-200 cursor-pointer"
       data-name="Theme card narrow"
     >
-      <ThemeBlockBackground1 />
+      <ThemeBlockBackground />
       <ProgressTheme1 />
       <ContentBlockThemeCard1 />
     </button>
@@ -1016,10 +1001,11 @@ function Frame22() {
 }
 
 function Frame25() {
+  const { t } = useI18n();
   return (
     <div className="box-border content-stretch flex flex-col gap-[30px] items-start justify-start p-0 relative shrink-0">
       <div className="font-['Kreon:Regular',_sans-serif] font-normal leading-[0] relative shrink-0 text-[#e1ff00] text-[24px] text-left w-[351px]">
-        <p className="block leading-[0.8]">What worries you?</p>
+        <p className="block leading-[0.8]">{t('home.whatWorriesYou', { defaultValue: 'What worries you?' })}</p>
       </div>
       <Frame22 />
     </div>
@@ -1064,6 +1050,7 @@ function EmergencyBlock() {
     }
   };
 
+  const { t } = useI18n();
   return (
     <div
       className="box-border content-stretch flex flex-col gap-5 items-start justify-start p-0 relative shrink-0"
@@ -1071,7 +1058,7 @@ function EmergencyBlock() {
     >
       {/* Заголовок блока экстренной помощи */}
       <div className="font-['Kreon:Regular',_sans-serif] font-normal leading-[0] relative shrink-0 text-[#e1ff00] text-[24px] text-left w-[351px]">
-        <p className="block leading-[0.8]">Quick mental help</p>
+        <p className="block leading-[0.8]">{t('emergency.title', { defaultValue: 'Quick mental help' })}</p>
       </div>
       {/* 
        * Горизонтальный слайдер с карточками экстренной помощи
@@ -1118,13 +1105,12 @@ function SocialIcons() {
 }
 
 function Frame42() {
+  const { t } = useI18n();
   return (
     <div className="absolute bottom-[16.438%] box-border content-stretch flex flex-row gap-[13px] items-center justify-start left-[7.831%] p-0 right-[7.831%] top-[17.808%]">
       <SocialIcons />
       <div className="font-['Kreon:Regular',_sans-serif] font-normal leading-[0] relative shrink-0 text-[#2d2b2b] text-[24px] text-nowrap text-right">
-        <p className="block leading-[0.8] whitespace-pre">
-          Follow
-        </p>
+        <p className="block leading-[0.8] whitespace-pre">{t('home.follow', { defaultValue: 'Follow' })}</p>
       </div>
     </div>
   );
@@ -1175,13 +1161,12 @@ function SocialIcons1() {
 }
 
 function Frame44() {
+  const { t } = useI18n();
   return (
     <div className="absolute bottom-[16.438%] box-border content-stretch flex flex-row gap-[13px] items-center justify-start left-[7.831%] p-0 right-[7.831%] top-[17.808%]">
       <SocialIcons1 />
       <div className="font-['Kreon:Regular',_sans-serif] font-normal leading-[0] relative shrink-0 text-[#2d2b2b] text-[24px] text-nowrap text-right">
-        <p className="block leading-[0.8] whitespace-pre">
-          Follow
-        </p>
+        <p className="block leading-[0.8] whitespace-pre">{t('home.follow', { defaultValue: 'Follow' })}</p>
       </div>
     </div>
   );

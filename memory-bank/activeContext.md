@@ -1,80 +1,61 @@
-# ACTIVE CONTEXT: PLAN MODE (Level 4)
+# ACTIVE CONTEXT: IMPLEMENT MODE (Level 4)
 
 ## CURRENT MODE
-**Mode:** PLAN (Level 4 - Complex System)
+**Mode:** IMPLEMENT (Level 4 - Complex System)
 **Status:** Active
-**Phase:** Creative Phases Complete, Ready for Implementation
+**Phase:** Phase 2 – Onboarding Flow Implementation
 
 ## CURRENT FOCUS
-- Transition from planning to implementation
-- Begin phased development based on creative phase deliverables
-- Validate implementation approach with proof of concept
-- Prepare for BUILD mode activation
+- Implement illustration-heavy onboarding with SVG components
+- Create multi-step navigation with progress indicators
+- Add smooth transitions between onboarding screens
+- Integrate with Telegram user context and theme
+- Ensure all visible text continues to use i18n
 
 ## NEXT STEPS
-1. **Implementation Phase 1:** Onboarding Flow
-   - Implement illustration-heavy onboarding with SVG components
-   - Create multi-step navigation with progress indicators
-   - Add smooth transitions between onboarding screens
-
-2. **Implementation Phase 2:** Mood Tracking
-   - Implement vertical mood slider with emotional state labels
-   - Create 7-day mood history visualization
-   - Add data persistence with encryption
-
-3. **Implementation Phase 3:** Emergency Help
-   - Implement horizontal card slider with drag-and-drop
-   - Create expandable card details with smooth animations
-   - Add usage tracking and analytics
-
-4. **Implementation Phase 4:** Card System
-   - Implement themed card grid for therapeutic content
-   - Create filtering and search functionality
-   - Add progress tracking and completion indicators
+1. Build onboarding screens from Figma with reusable components
+2. Implement progress indicator and navigation (Back/Next/Skip policies)
+3. Add animated transitions (enter/exit) optimized for low-end devices
+4. Wire to Telegram WebApp context (theme, initData)
+5. Validate a11y and keyboard navigation
 
 ## TRANSITION CRITERIA
-- [ ] Proof of concept implementation completed
-- [ ] Technology stack validated
-- [ ] Team briefed on creative phase deliverables
-- [ ] Implementation roadmap finalized
+- [ ] All onboarding screens implemented and navigable
+- [ ] Progress indicator accurate and responsive
+- [ ] Telegram context integrated and tested
+- [ ] i18n coverage verified for all onboarding strings
+- [ ] Performance validated on mobile devices
 
 ## STAKEHOLDERS & ROLES
-- **Product Owner:** Vision, requirements, priorities, business goals
-- **Psychology Team:** Card content, therapeutic approach, user needs
-- **Development Team:** Architecture, implementation, testing, technical decisions
-- **Support Team:** User feedback, onboarding assistance, content management
-- **Users:** Feedback, usage patterns, satisfaction, feature requests
+- **Product Owner:** Requirements, acceptance
+- **Design:** Figma handoff, motion specs
+- **Engineering:** Implementation, performance, QA
+- **Content:** Onboarding copy (en/ru)
 
 ## PROJECT CONTEXT
 - **Project:** Menhausen Telegram Mini App
 - **Level:** 4 (Complex System)
-- **Current Phase:** Planning Complete
-- **Next Phase:** Creative Design
+- **Current Phase:** Phase 2 – Onboarding
 - **MVP Scope:** Onboarding, check-ins, cards, i18n, encryption
 
 ## TECHNICAL CONTEXT
-- **Framework:** Next.js, React 18+, Vite, Tailwind CSS v4
-- **Backend:** Firebase (Firestore, Functions, Hosting)
-- **Integrations:** Telegram WebApp SDK, Payments API
-- **Security:** Client-side AES-256-GCM encryption
-- **Internationalization:** i18n with auto-detection
+- **Framework:** React 18+, Vite, Tailwind CSS v4
+- **Integrations:** Telegram WebApp SDK (theme, language)
+- **Internationalization:** i18n with Telegram auto-detect and language switcher
 
 ## DECISION POINTS
-- **Card Storage:** JSON in repo vs Firebase Storage vs CDN (TBD in creative phase)
-- **Offline Strategy:** Local cache vs service worker (future phase)
-- **Web3 Integration:** TON wallet integration scope (future phase)
-- **CMS Architecture:** Visual editor vs JSON-based approach
+- **Navigation policy:** Allow Skip or enforce full onboarding?
+- **Animation budget:** FPS targets and motion easing
+- **State storage:** Persist onboarding progress in localStorage?
 
 ## RISKS & MITIGATIONS
-- **Multi-language complexity:** Use i18n framework, automate translation workflow
-- **Encryption UX:** Ensure encryption doesn't break user experience
-- **Telegram SDK limitations:** Test across all Telegram clients
-- **Payment edge cases:** Handle failures, retries, support flows
-- **Phased rollout:** Ensure each phase is independently testable
+- **Performance on low-end devices:** Use simple transitions and memoization
+- **Telegram client differences:** Test iOS/Android/Web/Desktop
+- **Content overflow in translations:** Pseudo-localization checks
 
 ## SUCCESS CRITERIA
-- Memory Bank fully aligned and up-to-date
-- Creative phases completed with comprehensive design
-- Technology validation successful
-- Ready for Phase 1 implementation
+- Seamless, performant onboarding flow
+- Fully localized onboarding content (en/ru)
+- Clean integration with Telegram context
+- Positive user feedback in pilot tests
 
