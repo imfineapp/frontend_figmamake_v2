@@ -15,7 +15,8 @@
  * @version 1.0
  */
 
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useI18n } from '../src/hooks/useI18n';
 
 /**
  * Интерфейс пропсов для компонента MoodSlider
@@ -48,12 +49,12 @@ interface MoodSliderProps {
  * 3 - Энергичное состояние
  * 4 - Счастливое состояние
  */
-const moodTexts = [
-  "I'm feeling down",    // Позиция 0: грустное настроение
-  "I'm anxious",         // Позиция 1: тревожное состояние
-  "I'm neutral",         // Позиция 2: нейтральное состояние (центр)
-  "I'm energized",       // Позиция 3: энергичное состояние
-  "I'm happy"           // Позиция 4: счастливое состояние
+const moodTextKeys: Array<keyof typeof import('../src/i18n/locales/en.json')['checkin']['moodText']> = [
+  'down',
+  'anxious',
+  'neutral',
+  'energized',
+  'happy'
 ];
 
 /**
@@ -68,6 +69,7 @@ const moodTexts = [
  * @returns JSX элемент слайдера настроения
  */
 export function MoodSlider({ initialValue = 3, onValueChange }: MoodSliderProps) {
+  const { t } = useI18n();
   /**
    * Состояние текущего значения слайдера (0-4)
    * Управляет положением индикатора и отображаемым текстом
@@ -147,7 +149,7 @@ export function MoodSlider({ initialValue = 3, onValueChange }: MoodSliderProps)
         <div className="absolute font-['Kreon:Regular',_sans-serif] font-normal inset-0 leading-[0] text-[#313131] text-[32px] text-left">
           <p className="block leading-[0.8]">
             {/* Отображаем текст, соответствующий текущему значению слайдера */}
-            {moodTexts[value]}
+            {t(`checkin.moodText.${moodTextKeys[value]}`)}
           </p>
         </div>
       </div>
@@ -165,7 +167,7 @@ export function MoodSlider({ initialValue = 3, onValueChange }: MoodSliderProps)
         aria-valuemin={0}
         aria-valuemax={4}
         aria-valuenow={value}
-        aria-label={`Слайдер настроения: ${moodTexts[value]}`}
+        aria-label={t(`checkin.moodText.${moodTextKeys[value]}`)}
         tabIndex={0}
       >
         {/* === ЗАПОЛНЕННАЯ ЧАСТЬ СЛАЙДЕРА === */}

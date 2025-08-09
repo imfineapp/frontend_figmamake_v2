@@ -1,0 +1,6 @@
+---
+description: All visible UI text in the project must be loaded through the i18n system; no hard-coded text should remain in components.
+globs:
+alwaysApply: true
+---
+- All visible UI text in the project must be loaded through the i18n system; no hard-coded text should remain in components.

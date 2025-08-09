@@ -1,4 +1,6 @@
+import React from 'react'
 import svgPaths from "./svg-o5jzzeti43";
+import { useI18n } from "../src/hooks/useI18n";
 
 function Light() {
   return (
@@ -86,10 +88,12 @@ function Light() {
 }
 
 function SmallButton() {
+  const { t } = useI18n();
   return (
     <div
       className="bg-[#e1ff00] h-[46px] relative rounded-xl shrink-0 w-[62px]"
       data-name="Small button"
+      aria-label={t('navigation.back')}
     >
       <div className="flex flex-row items-center justify-center relative size-full">
         <div className="box-border content-stretch flex flex-row gap-2.5 h-[46px] items-center justify-center px-[126px] py-[15px] relative w-[62px]">
@@ -103,14 +107,16 @@ function SmallButton() {
 }
 
 function ButtonNext() {
+  const { t } = useI18n();
   return (
     <div
       className="bg-[#e1ff00] box-border content-stretch flex flex-row gap-2.5 h-[46px] items-center justify-center px-[126px] py-[15px] relative rounded-xl shrink-0 w-[268px]"
       data-name="Button (Next)"
+      aria-label={t('navigation.next')}
     >
       <div className="font-['PT_Sans:Bold',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#424040] text-[15px] text-center text-nowrap tracking-[-0.43px]">
         <p className="adjustLetterSpacing block leading-[16px] whitespace-pre">
-          Next
+          {t('navigation.next')}
         </p>
       </div>
     </div>
@@ -153,222 +159,33 @@ function RadioOff() {
   );
 }
 
-function SurveyItem() {
+function SurveyItem({ label, highlighted = false }: { label: string; highlighted?: boolean }) {
   return (
     <div
       className="box-border content-stretch flex flex-row gap-2.5 items-center justify-start p-0 relative shrink-0 w-[331px]"
       data-name="Survey_item"
     >
       <RadioOff />
-      <div className="font-['PT_Sans:Regular',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[20px] text-left w-[307px]">
-        <p className="block leading-none">Stress</p>
-      </div>
-    </div>
-  );
-}
-
-function RadioOff1() {
-  return (
-    <div className="relative shrink-0 size-3.5" data-name="Radio_off">
-      <svg
-        className="block size-full"
-        fill="none"
-        preserveAspectRatio="none"
-        viewBox="0 0 14 14"
-      >
-        <g id="Radio_off">
-          <circle
-            cx="7"
-            cy="7"
-            id="Ellipse 5"
-            r="6"
-            stroke="var(--stroke-0, #8E8E8E)"
-            strokeWidth="2"
-          />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function SurveyItem1() {
-  return (
-    <div
-      className="box-border content-stretch flex flex-row gap-2.5 items-center justify-start p-0 relative shrink-0 w-[331px]"
-      data-name="Survey_item"
-    >
-      <RadioOff1 />
-      <div className="font-['PT_Sans:Regular',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[20px] text-left w-[307px]">
-        <p className="block leading-none">Depression</p>
-      </div>
-    </div>
-  );
-}
-
-function RadioOff2() {
-  return (
-    <div className="relative shrink-0 size-3.5" data-name="Radio_off">
-      <svg
-        className="block size-full"
-        fill="none"
-        preserveAspectRatio="none"
-        viewBox="0 0 14 14"
-      >
-        <g id="Radio_off">
-          <circle
-            cx="7"
-            cy="7"
-            id="Ellipse 5"
-            r="6"
-            stroke="var(--stroke-0, #E1FF00)"
-            strokeWidth="2"
-          />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function SurveyItem2() {
-  return (
-    <div
-      className="box-border content-stretch flex flex-row gap-2.5 items-center justify-start p-0 relative shrink-0 w-[331px]"
-      data-name="Survey_item"
-    >
-      <RadioOff2 />
-      <div className="font-['PT_Sans:Regular',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#e1ff00] text-[20px] text-left w-[307px]">
-        <p className="block leading-none">Anger</p>
-      </div>
-    </div>
-  );
-}
-
-function RadioOff3() {
-  return (
-    <div className="relative shrink-0 size-3.5" data-name="Radio_off">
-      <svg
-        className="block size-full"
-        fill="none"
-        preserveAspectRatio="none"
-        viewBox="0 0 14 14"
-      >
-        <g id="Radio_off">
-          <circle
-            cx="7"
-            cy="7"
-            id="Ellipse 5"
-            r="6"
-            stroke="var(--stroke-0, #E1FF00)"
-            strokeWidth="2"
-          />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function SurveyItem3() {
-  return (
-    <div
-      className="box-border content-stretch flex flex-row gap-2.5 items-center justify-start p-0 relative shrink-0 w-[331px]"
-      data-name="Survey_item"
-    >
-      <RadioOff3 />
-      <div className="font-['PT_Sans:Regular',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#e1ff00] text-[20px] text-left w-[307px]">
-        <p className="block leading-none">Sadness and apathy</p>
-      </div>
-    </div>
-  );
-}
-
-function RadioOff4() {
-  return (
-    <div className="relative shrink-0 size-3.5" data-name="Radio_off">
-      <svg
-        className="block size-full"
-        fill="none"
-        preserveAspectRatio="none"
-        viewBox="0 0 14 14"
-      >
-        <g id="Radio_off">
-          <circle
-            cx="7"
-            cy="7"
-            id="Ellipse 5"
-            r="6"
-            stroke="var(--stroke-0, #8E8E8E)"
-            strokeWidth="2"
-          />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function SurveyItem4() {
-  return (
-    <div
-      className="box-border content-stretch flex flex-row gap-2.5 items-center justify-start p-0 relative shrink-0 w-[331px]"
-      data-name="Survey_item"
-    >
-      <RadioOff4 />
-      <div className="font-['PT_Sans:Regular',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[20px] text-left w-[307px]">
-        <p className="block leading-none">Anxiety</p>
-      </div>
-    </div>
-  );
-}
-
-function RadioOff5() {
-  return (
-    <div className="relative shrink-0 size-3.5" data-name="Radio_off">
-      <svg
-        className="block size-full"
-        fill="none"
-        preserveAspectRatio="none"
-        viewBox="0 0 14 14"
-      >
-        <g id="Radio_off">
-          <circle
-            cx="7"
-            cy="7"
-            id="Ellipse 5"
-            r="6"
-            stroke="var(--stroke-0, #E1FF00)"
-            strokeWidth="2"
-          />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function SurveyItem5() {
-  return (
-    <div
-      className="box-border content-stretch flex flex-row gap-2.5 items-center justify-start p-0 relative shrink-0 w-[331px]"
-      data-name="Survey_item"
-    >
-      <RadioOff5 />
-      <div className="font-['PT_Sans:Regular',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#e1ff00] text-[20px] text-left w-[307px]">
-        <p className="block leading-none">Relationships</p>
+      <div className={`font-['PT_Sans:Regular',_sans-serif] leading-[0] not-italic relative shrink-0 text-[20px] text-left w-[307px] ${highlighted ? 'text-[#e1ff00]' : 'text-[#ffffff]'}`}>
+        <p className="block leading-none">{label}</p>
       </div>
     </div>
   );
 }
 
 function ServeyBlock() {
+  const { t } = useI18n();
   return (
     <div
       className="absolute box-border content-stretch flex flex-col gap-2.5 items-start justify-start left-[41px] p-0 top-[367px] w-[331px]"
       data-name="Servey_block"
     >
-      <SurveyItem />
-      <SurveyItem1 />
-      <SurveyItem2 />
-      <SurveyItem3 />
-      <SurveyItem4 />
-      <SurveyItem5 />
+      <SurveyItem label={t('survey.concerns.stress')} />
+      <SurveyItem label={t('survey.concerns.depression')} />
+      <SurveyItem label={t('survey.concerns.anger')} highlighted />
+      <SurveyItem label={t('survey.concerns.sadnessApathy')} highlighted />
+      <SurveyItem label={t('survey.concerns.anxiety')} />
+      <SurveyItem label={t('survey.concerns.relationships')} highlighted />
     </div>
   );
 }
@@ -403,17 +220,18 @@ function SepaprationLine() {
 }
 
 function HeroBlockAnswer() {
+  const { t } = useI18n();
   return (
     <div
       className="absolute box-border content-stretch flex flex-col gap-5 items-start justify-start leading-[0] left-5 p-0 text-center top-[189px] w-[352px]"
       data-name="Hero_block_answer"
     >
       <div className="font-['Kreon:Regular',_sans-serif] font-normal leading-[0.8] relative shrink-0 text-[#e1ff00] text-[36px] w-full">
-        <p className="block mb-0">{`What worries you `}</p>
-        <p className="block">the most?</p>
+        <p className="block mb-0">{t('survey.question').split(' ').slice(0, 3).join(' ') + ' '}</p>
+        <p className="block">{t('survey.question').split(' ').slice(3).join(' ')}</p>
       </div>
       <div className="font-['PT_Sans:Regular',_sans-serif] not-italic relative shrink-0 text-[#ffffff] text-[20px] w-full">
-        <p className="block leading-none">You can choose several options</p>
+        <p className="block leading-none">{t('survey.hint')}</p>
       </div>
     </div>
   );
