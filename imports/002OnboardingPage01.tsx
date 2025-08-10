@@ -1,4 +1,5 @@
 import svgPaths from "./svg-0zb5wqdngu";
+import { useI18n } from "../src/hooks/useI18n";
 
 function Light() {
   return (
@@ -86,14 +87,16 @@ function Light() {
 }
 
 function Button() {
+  const { t } = useI18n();
   return (
     <div
       className="absolute bg-[#e1ff00] box-border content-stretch flex flex-row gap-2.5 h-[46px] items-center justify-center left-[23px] px-[126px] py-[15px] rounded-xl top-[758px] w-[350px]"
       data-name="Button"
+      aria-label={t('navigation.next')}
     >
       <div className="font-['PT_Sans:Bold',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#424040] text-[15px] text-center text-nowrap tracking-[-0.43px]">
         <p className="adjustLetterSpacing block leading-[16px] whitespace-pre">
-          Next
+          {t('navigation.next')}
         </p>
       </div>
     </div>
@@ -212,6 +215,7 @@ function MiniStripeLogo() {
 }
 
 export default function Component002OnboardingPage01() {
+  const { t } = useI18n();
   return (
     <div
       className="bg-[#111111] relative size-full"
@@ -220,15 +224,14 @@ export default function Component002OnboardingPage01() {
       <Light />
       <div className="absolute font-['PT_Sans:Regular',_sans-serif] h-[89px] leading-[0] left-[195.5px] not-italic text-[#ffffff] text-[20px] text-center top-[376px] translate-x-[-50%] w-[347px]">
         <p className="block leading-none">
-          Anonymous digital self-help tool for men. 60-second cards based on
-          scientific methods. Right in Telegram, no registration required.
+          {t('onboarding.heroDescription')}
         </p>
       </div>
       <div className="absolute font-['Kreon:Regular',_sans-serif] font-normal leading-[0] left-[197.5px] text-[#c2c2c2] text-[0px] text-center top-[277px] translate-x-[-50%] w-[351px]">
-        <p className="block leading-[0.8] mb-0 text-[36px]">{`You don't have `}</p>
+        <p className="block leading-[0.8] mb-0 text-[36px]">{t('onboarding.hero.line1')}</p>
         <p className="leading-[0.8] text-[36px]">
-          <span className="text-[#e1ff00]">to cope</span>
-          <span>{` alone`}</span>
+          <span className="text-[#e1ff00]">{t('onboarding.hero.line2Yellow')}</span>
+          <span>{`\u00A0${t('onboarding.hero.line2Rest')}`}</span>
         </p>
       </div>
       <Button />

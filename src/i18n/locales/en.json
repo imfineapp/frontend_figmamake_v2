@@ -1,0 +1,183 @@
+{
+  "app": {
+    "title": "Menhausen",
+    "subtitle": "Mental Health Companion",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Retry"
+  },
+  "navigation": {
+    "home": "Home",
+    "checkin": "Check-in",
+    "cards": "Cards",
+    "profile": "Profile",
+    "back": "Back",
+    "next": "Next",
+    "skip": "Skip",
+    "done": "Done"
+  },
+  "onboarding": {
+    "welcome": {
+      "title": "Welcome to Menhausen",
+      "subtitle": "Your personal mental health companion",
+      "description": "Start your journey to better mental well-being with daily check-ins, personalized content, and professional support."
+    },
+    "privacy": {
+      "title": "Your Privacy Matters",
+      "subtitle": "All your data is encrypted",
+      "description": "We use client-side encryption to protect your personal information. Your data never leaves your device unencrypted."
+    },
+    "features": {
+      "title": "What We Offer",
+      "subtitle": "Tools for your mental wellness",
+      "description": "Daily mood tracking, therapeutic cards, emergency support, and insights into your mental health patterns."
+    },
+    "ready": {
+      "title": "You're All Set!",
+      "subtitle": "Ready to begin?",
+      "description": "Let's start with your first check-in to understand how you're feeling today.",
+      "startButton": "Start Journey"
+    },
+    "hero": {
+      "line1": "You don't have",
+      "line2Yellow": "to cope",
+      "line2Rest": "alone"
+    },
+    "heroDescription": "Anonymous digital self-help tool for men. 60-second cards based on scientific methods. Right in Telegram, no registration required."
+  },
+  "survey": {
+    "question": "What worries you the most?",
+    "hint": "You can choose several options",
+    "concerns": {
+      "stress": "Stress",
+      "depression": "Depression",
+      "anger": "Anger",
+      "sadnessApathy": "Sadness and apathy",
+      "anxiety": "Anxiety",
+      "relationships": "Relationships"
+    }
+  },
+  "checkin": {
+    "title": "Daily Check-in",
+    "subtitle": "How are you feeling today?",
+    "moodLabels": {
+      "excellent": "Excellent",
+      "good": "Good",
+      "okay": "Okay",
+      "difficult": "Difficult",
+      "terrible": "Terrible"
+    },
+    "moodText": {
+      "down": "I'm feeling down",
+      "anxious": "I'm anxious",
+      "neutral": "I'm neutral",
+      "energized": "I'm energized",
+      "happy": "I'm happy"
+    },
+    "questions": {
+      "energy": "How is your energy level?",
+      "sleep": "How did you sleep last night?",
+      "stress": "How stressed do you feel?",
+      "social": "How connected do you feel to others?"
+    },
+    "tip": "Check in with yourself — it's the first step to self-care! Do it everyday.",
+    "submit": "Submit Check-in",
+    "success": "Check-in completed successfully!",
+    "streak": "Day streak: {{count}}"
+  },
+  "cards": {
+    "title": "Therapeutic Cards",
+    "subtitle": "Explore content for your well-being",
+    "categories": {
+      "anxiety": "Anxiety",
+      "depression": "Depression",
+      "stress": "Stress Management",
+      "relationships": "Relationships",
+      "selfCare": "Self Care",
+      "mindfulness": "Mindfulness"
+    },
+    "filters": {
+      "all": "All Cards",
+      "favorites": "Favorites",
+      "completed": "Completed",
+      "inProgress": "In Progress"
+    },
+    "duration": "{{minutes}} min read",
+    "markComplete": "Mark as Complete",
+    "addToFavorites": "Add to Favorites",
+    "share": "Share"
+  },
+  "emergency": {
+    "title": "Emergency Support",
+    "subtitle": "Immediate help when you need it",
+    "warning": "If you're in immediate danger, please contact emergency services",
+    "hotlines": {
+      "title": "Crisis Hotlines",
+      "suicide": "Suicide Prevention",
+      "crisis": "Crisis Support",
+      "domestic": "Domestic Violence"
+    },
+    "techniques": {
+      "title": "Quick Relief Techniques",
+      "breathing": "Breathing Exercise",
+      "grounding": "Grounding Technique",
+      "mindfulness": "Mindful Moment"
+    },
+    "cardsTitles": {
+      "sensory": "Sensory grounding",
+      "muscle": "Progressive muscle relaxation",
+      "bursts": "Intense short bursts",
+      "diving": "Cold diving reflex",
+      "breathing": "Emergency breathing patterns"
+    },
+    "cardDescription": "Check in with yourself — it's the first step to self-care! Do it everyday."
+  },
+  "profile": {
+    "title": "Profile",
+    "settings": "Settings",
+    "language": "Language",
+    "notifications": "Notifications",
+    "privacy": "Privacy",
+    "about": "About",
+    "support": "Support",
+    "logout": "Logout"
+  },
+  "settings": {
+    "language": {
+      "title": "Language",
+      "description": "Choose your preferred language",
+      "options": {
+        "en": "English",
+        "ru": "Русский"
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "description": "Manage your notification preferences",
+      "dailyReminder": "Daily check-in reminder",
+      "weeklyInsights": "Weekly insights",
+      "emergencyAlerts": "Emergency alerts"
+    }
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "confirm": "Confirm",
+    "close": "Close",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK"
+  },
+  "errors": {
+    "network": "Network connection error. Please check your internet connection.",
+    "server": "Server error. Please try again later.",
+    "validation": "Please check your input and try again.",
+    "unknown": "An unexpected error occurred. Please try again.",
+    "notFound": "The requested content was not found."
+  }
+}
