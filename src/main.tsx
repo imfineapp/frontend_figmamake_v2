@@ -12,6 +12,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from '../App'
 import '../styles/globals.css'
+import './i18n' // Инициализация i18n
 
 // === ТИПЫ ДЛЯ TELEGRAM WEB APP ===
 declare global {

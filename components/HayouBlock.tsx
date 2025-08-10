@@ -10,19 +10,20 @@
  * - Кнопку отправки с hover эффектами
  */
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 // Импорт SVG путей из правильного файла макета
 import svgPaths from "../imports/svg-jv59jjv4gt";
+import { useI18n } from '../src/hooks/useI18n';
 
 /**
  * Компонент иконки информации с интерактивностью
  * Показывает подсказку при клике и имеет hover эффекты
  */
 function InfoIcon24() {
+  const { t } = useI18n();
   const handleInfoClick = () => {
     console.log('Info icon clicked');
-    // Здесь можно добавить логику для показа модального окна или подсказки
-    alert('Здесь будет информация о том, как отслеживать своё настроение и самочувствие');
+    alert(t('checkin.tip'));
   };
 
   return (
@@ -30,7 +31,7 @@ function InfoIcon24() {
       onClick={handleInfoClick}
       className="relative shrink-0 size-6 hover:opacity-70 transition-opacity duration-200 cursor-pointer" 
       data-name="Info_icon_24"
-      aria-label="Информация о настроении"
+      aria-label={t('navigation.info', { defaultValue: 'Info' })}
     >
       <svg
         className="block size-full"
@@ -77,6 +78,7 @@ function InfoIcon24() {
  * Расположены по краям с выравниванием между ними
  */
 function InfoGroup() {
+  const { t } = useI18n();
   return (
     <div
       className="box-border content-stretch flex flex-row items-center justify-between p-0 relative shrink-0 w-full"
@@ -84,7 +86,7 @@ function InfoGroup() {
     >
       {/* Заголовок */}
       <div className="font-['Kreon:Regular',_sans-serif] font-normal leading-[0] relative shrink-0 text-[#313131] text-[24px] text-left text-nowrap">
-        <p className="block leading-[0.8] whitespace-pre">How are you?</p>
+        <p className="block leading-[0.8] whitespace-pre">{t('checkin.subtitle')}</p>
       </div>
       {/* Интерактивная иконка информации */}
       <InfoIcon24 />
@@ -101,42 +103,33 @@ interface MoodSliderProps {
   onValueChange?: (value: number) => void;
 }
 
-// Массив текстов для каждой позиции слайдера (0-4)
-const moodTexts = [
-  "I'm feeling down",    // Позиция 0
-  "I'm anxious",         // Позиция 1 
-  "I'm neutral",         // Позиция 2 (по умолчанию)
-  "I'm energized",       // Позиция 3
-  "I'm happy"           // Позиция 4
+// Массив ключей для текстов настроения
+const moodTextKeys: Array<keyof typeof import('../src/i18n/locales/en.json')['checkin']['moodText']> = [
+  'down',
+  'anxious',
+  'neutral',
+  'energized',
+  'happy'
 ];
 
 function MoodSliderComponent({ initialValue = 2, onValueChange }: MoodSliderProps) {
-  // Состояние текущего значения слайдера (0-4)
+  const { t } = useI18n();
   const [value, setValue] = useState(initialValue);
-  
-  /**
-   * Обработчик изменения значения слайдера
-   * @param newValue - новое значение от 0 до 4
-   */
+
   const handleSliderChange = (newValue: number) => {
     setValue(newValue);
     onValueChange?.(newValue);
   };
 
-  /**
-   * Обработчик клика по слайдеру для установки позиции
-   * Рассчитывает позицию на основе координат клика
-   */
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const percentage = x / rect.width;
-    const newValue = Math.round(percentage * 4); // 0-4 для 5 позиций
+    const newValue = Math.round(percentage * 4);
     const clampedValue = Math.max(0, Math.min(4, newValue));
     handleSliderChange(clampedValue);
   };
 
-  // Вычисляем процент заполнения слайдера на основе текущего значения
   const sliderWidth = (value / 4) * 100;
 
   return (
@@ -144,10 +137,10 @@ function MoodSliderComponent({ initialValue = 2, onValueChange }: MoodSliderProp
       {/* Отображение текущего настроения */}
       <div
         className="h-[26px] relative shrink-0 w-full"
-        data-name="I\'m feeling down..."
+        data-name="I'm feeling down..."
       >
         <div className="absolute font-['Kreon:Regular',_sans-serif] font-normal inset-0 leading-[0] text-[#313131] text-[32px] text-left">
-          <p className="block leading-[0.8]">{moodTexts[value]}</p>
+          <p className="block leading-[0.8]">{t(`checkin.moodText.${moodTextKeys[value]}`)}</p>
         </div>
       </div>
       
@@ -175,9 +168,9 @@ function MoodSliderComponent({ initialValue = 2, onValueChange }: MoodSliderProp
  * Включает hover эффекты и анимации
  */
 function SendButton() {
+  const { t } = useI18n();
   const handleSendClick = () => {
     console.log('Send button clicked');
-    // Здесь можно добавить логику отправки данных настроения
   };
 
   return (
@@ -185,12 +178,13 @@ function SendButton() {
       onClick={handleSendClick}
       className="bg-[#2d2b2b] h-[46px] relative rounded-xl shrink-0 w-full hover:bg-[#404040] transition-colors duration-200 active:scale-95"
       data-name="Start Mining"
+      aria-label={t('checkin.submit')}
     >
       <div className="flex flex-row items-center justify-center relative size-full">
         <div className="box-border content-stretch flex flex-row gap-2.5 h-[46px] items-center justify-center px-[126px] py-[15px] relative w-full">
           <div className="font-['PT_Sans:Bold',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#e1ff00] text-[15px] text-center text-nowrap tracking-[-0.43px]">
             <p className="adjustLetterSpacing block leading-[16px] whitespace-pre">
-              Send
+              {t('checkin.submit')}
             </p>
           </div>
         </div>
@@ -201,10 +195,9 @@ function SendButton() {
 
 /**
  * Основной контейнер содержимого блока
- * Содержит все элементы с симметричными отступами от фона
- * Общая ширина блока: 351px, контент: 319px, отступы: по 16px с каждой стороны
  */
 function ContentFrame() {
+  const { t } = useI18n();
   return (
     <div className="absolute box-border content-stretch flex flex-col gap-5 items-start justify-start left-4 p-0 top-3 w-[319px]">
       {/* Заголовочная группа */}
@@ -215,7 +208,7 @@ function ContentFrame() {
       
       {/* Описательный текст */}
       <div className="font-['PT_Sans:Regular',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#333333] text-[20px] text-left w-full">
-        <p className="block leading-none">{`Check in with yourself — it's the first step to self-care! Do it everyday.`}</p>
+        <p className="block leading-none">{t('checkin.tip')}</p>
       </div>
       
       {/* Кнопка отправки */}
@@ -224,10 +217,6 @@ function ContentFrame() {
   );
 }
 
-/**
- * Группа с фоном и содержимым
- * Применяет желтый фон и центрирует контент
- */
 function BackgroundGroup() {
   return (
     <div className="absolute bottom-0 contents left-1/2 top-0 translate-x-[-50%]">
@@ -242,12 +231,6 @@ function BackgroundGroup() {
   );
 }
 
-/**
- * Главный экспортируемый компонент HayouBlock
- * Предоставляет полнофункциональный блок настроения пользователя
- * 
- * @returns JSX компонент с интерактивным блоком настроения
- */
 export default function HayouBlock() {
   return (
     <div 

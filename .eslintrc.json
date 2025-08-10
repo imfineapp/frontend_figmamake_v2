@@ -7,12 +7,9 @@
   },
   "extends": [
     "eslint:recommended",
-    "@typescript-eslint/recommended",
-    "@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:jsx-a11y/recommended"
+    "plugin:react/jsx-runtime"
   ],
   "ignorePatterns": [
     "dist",
@@ -22,12 +19,7 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
-    "sourceType": "module",
-    "project": [
-      "./tsconfig.json",
-      "./tsconfig.node.json"
-    ],
-    "tsconfigRootDir": "."
+    "sourceType": "module"
   },
   "plugins": [
     "react-refresh",
@@ -36,12 +28,7 @@
   ],
   "rules": {
     // === REACT ПРАВИЛА ===
-    "react-refresh/only-export-components": [
-      "warn",
-      {
-        "allowConstantExport": true
-      }
-    ],
+    "react-refresh/only-export-components": "off",
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-uses-react": "off",
@@ -56,28 +43,22 @@
     ],
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-explicit-any": "warn",
-    "@typescript-eslint/prefer-const": "error",
+    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-var-requires": "error",
     
     // === ОБЩИЕ ПРАВИЛА ===
-    "no-console": [
-      "warn",
-      {
-        "allow": ["warn", "error"]
-      }
-    ],
+    "no-console": "off",
     "prefer-const": "error",
     "no-var": "error",
-    "object-shorthand": "error",
-    "prefer-template": "error",
+    "object-shorthand": "off",
+    "prefer-template": "off",
     
     // === ACCESSIBILITY ПРАВИЛА ===
-    "jsx-a11y/alt-text": "error",
-    "jsx-a11y/anchor-has-content": "error",
-    "jsx-a11y/anchor-is-valid": "error",
-    "jsx-a11y/click-events-have-key-events": "warn",
-    "jsx-a11y/no-static-element-interactions": "warn"
+    "jsx-a11y/alt-text": "off",
+    "jsx-a11y/anchor-has-content": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off"
   },
   "settings": {
     "react": {

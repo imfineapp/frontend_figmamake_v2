@@ -40,13 +40,15 @@
 // =====================================================================================
 
 /**
- * Импорт React хука для управления состоянием компонента
+ * Импорт React хуков для управления состоянием/эффектами компонента
  * useState используется для:
  * - Отслеживания текущей активной страницы
  * - Хранения выбранных пользователем проблем в опросе
  * - Управления навигацией между страницами
  */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useI18n } from './src/hooks/useI18n';
+import { CompactLanguageSwitcher } from './components/LanguageSwitcher';
 
 /**
  * Импорт компонентов страниц, созданных из импортированных Figma дизайнов
@@ -58,6 +60,9 @@ import { useState } from 'react';
  */
 import Component002OnboardingPage01 from './imports/002OnboardingPage01'; // Первая страница онбординга (приветствие)
 import Component004HomeMainPage from './imports/004HomeMainPage'; // Главная страница приложения
+
+// Telegram Mini Apps SDK
+import { init as initTelegramSdk, isTMA, viewport } from '@telegram-apps/sdk';
 
 /**
  * =====================================================================================
@@ -85,6 +90,46 @@ export default function App() {
   // =====================================================================================
   // СОСТОЯНИЯ ПРИЛОЖЕНИЯ (STATE MANAGEMENT)
   // =====================================================================================
+  
+  // Инициализация i18n
+  const { t, isReady } = useI18n();
+
+  // Инициализация Telegram Mini Apps SDK: полноэкранный режим и монтирование viewport
+  useEffect(() => {
+    void (async () => {
+      try {
+        if (await isTMA()) {
+          initTelegramSdk();
+
+          if (viewport.mount.isAvailable()) {
+            await viewport.mount();
+            viewport.expand();
+          }
+
+          if (viewport.requestFullscreen.isAvailable()) {
+            try {
+              await viewport.requestFullscreen();
+            } catch {
+              // ignore fullscreen errors (platform restrictions)
+            }
+          }
+        }
+      } catch (error) {
+        // Безопасно игнорируем, если не в среде Telegram Mini App
+        console.warn('Telegram SDK initialization skipped', error);
+      }
+    })();
+    return undefined;
+  }, []);
+  
+  // Показать загрузку пока i18n не готов
+  if (!isReady) {
+    return (
+      <div className="h-screen w-full max-w-md mx-auto bg-[#111111] flex items-center justify-center">
+        <div className="text-[#E1FF00] text-lg">{t('app.loading')}</div>
+      </div>
+    );
+  }
   
   /**
    * Текущая активная страница приложения
@@ -438,6 +483,11 @@ export default function App() {
           ===================================================================================== */}
       {currentPage === 0 && (
         <div className="h-full w-full relative">
+          {/* === ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА === */}
+          <div className="absolute top-4 right-4 z-10">
+            <CompactLanguageSwitcher />
+          </div>
+          
           {/* === ИМПОРТИРОВАННЫЙ ДИЗАЙН ИЗ FIGMA === */}
           {/* 
             Компонент онбординга, созданный из Figma дизайна
@@ -467,11 +517,11 @@ export default function App() {
           <button
             onClick={handleNext}
             className="absolute bg-[#e1ff00] box-border content-stretch flex flex-row gap-2.5 h-[46px] items-center justify-center left-[23px] px-[126px] py-[15px] rounded-xl top-[758px] w-[350px] hover:bg-[#d1ef00] transition-colors duration-200 active:scale-95"
-            aria-label="Перейти к опросу"
+            aria-label={t('navigation.next')}
           >
             <div className="font-['PT_Sans:Bold',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#424040] text-[15px] text-center text-nowrap tracking-[-0.43px]">
               <p className="adjustLetterSpacing block leading-[16px] whitespace-pre">
-                Next
+                {t('navigation.next')}
               </p>
             </div>
           </button>
@@ -483,6 +533,11 @@ export default function App() {
           ===================================================================================== */}
       {currentPage === 1 && (
         <div className="h-full w-full relative">
+          {/* === ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА === */}
+          <div className="absolute top-4 right-4 z-10">
+            <CompactLanguageSwitcher />
+          </div>
+          
           {/* 
             КАСТОМНАЯ РЕАЛИЗАЦИЯ СТРАНИЦЫ ОПРОСА
             
@@ -662,12 +717,12 @@ export default function App() {
             <div className="absolute box-border content-stretch flex flex-col gap-5 items-start justify-start leading-[0] left-5 p-0 text-center top-[189px] w-[352px]">
               {/* Основной заголовок с разбивкой на строки */}
               <div className="font-['Kreon:Regular',_sans-serif] font-normal leading-[0.8] relative shrink-0 text-[#e1ff00] text-[36px] w-full">
-                <p className="block mb-0">What worries you</p>
-                <p className="block">the most?</p>
+                <p className="block mb-0">{t('survey.question').split(' ').slice(0, 3).join(' ') + ' '}</p>
+                <p className="block">{t('survey.question').split(' ').slice(3).join(' ')}</p>
               </div>
               {/* Подзаголовок с инструкцией для пользователя */}
               <div className="font-['PT_Sans:Regular',_sans-serif] not-italic relative shrink-0 text-[#ffffff] text-[20px] w-full">
-                <p className="block leading-none">You can choose several options</p>
+                <p className="block leading-none">{t('survey.hint')}</p>
               </div>
             </div>
 
@@ -720,7 +775,7 @@ export default function App() {
               <button
                 onClick={handleBack}
                 className="bg-[#e1ff00] h-[46px] relative rounded-xl shrink-0 w-[62px] hover:bg-[#d1ef00] transition-colors duration-200 active:scale-95"
-                aria-label="Вернуться к предыдущей странице"
+                aria-label={t('navigation.back')}
               >
                 <div className="flex flex-row items-center justify-center relative size-full">
                   <div className="font-['PT_Sans:Bold',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#424040] text-[15px] text-center text-nowrap tracking-[-0.43px]">
@@ -733,10 +788,10 @@ export default function App() {
               <button
                 onClick={handleNext}
                 className="bg-[#e1ff00] box-border content-stretch flex flex-row gap-2.5 h-[46px] items-center justify-center px-[126px] py-[15px] relative rounded-xl shrink-0 w-[268px] hover:bg-[#d1ef00] transition-colors duration-200 active:scale-95"
-                aria-label="Перейти к главной странице приложения"
+                aria-label={t('navigation.next')}
               >
                 <div className="font-['PT_Sans:Bold',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#424040] text-[15px] text-center text-nowrap tracking-[-0.43px]">
-                  <p className="adjustLetterSpacing block leading-[16px] whitespace-pre">Next</p>
+                  <p className="adjustLetterSpacing block leading-[16px] whitespace-pre">{t('navigation.next')}</p>
                 </div>
               </button>
             </div>
