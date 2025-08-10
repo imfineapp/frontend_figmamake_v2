@@ -104,31 +104,8 @@
     <!-- === ОСНОВНОЙ СКРИПТ === -->
     <script type="module" src="/src/main.tsx"></script>
     
-    <!-- === ИНИЦИАЛИЗАЦИЯ TELEGRAM WEB APP === -->
+    <!-- === POST-LOAD UI STATE === -->
     <script>
-      // Инициализация Telegram Web App
-      if (window.Telegram && window.Telegram.WebApp) {
-        const tg = window.Telegram.WebApp;
-        
-        // Разворачиваем приложение на весь экран
-        tg.expand();
-        
-        // Отключаем анимацию закрытия
-        tg.disableVerticalSwipes();
-        
-        // Устанавливаем цвета темы
-        tg.setHeaderColor('#111111');
-        tg.setBackgroundColor('#111111');
-        
-        // Показываем главную кнопку если нужно
-        tg.MainButton.hide();
-        
-        // Готовность приложения
-        tg.ready();
-        
-        console.log('Telegram Web App initialized');
-      }
-      
       // Удаляем загрузочный экран после загрузки
       window.addEventListener('load', () => {
         setTimeout(() => {

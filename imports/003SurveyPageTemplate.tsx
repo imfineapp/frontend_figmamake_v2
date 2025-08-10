@@ -1,4 +1,4 @@
-import React from 'react'
+// React import removed (not needed with JSX transform)
 import svgPaths from "./svg-o5jzzeti43";
 import { useI18n } from "../src/hooks/useI18n";
 

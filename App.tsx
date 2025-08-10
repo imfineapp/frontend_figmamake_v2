@@ -40,13 +40,13 @@
 // =====================================================================================
 
 /**
- * Импорт React хука для управления состоянием компонента
+ * Импорт React хуков для управления состоянием/эффектами компонента
  * useState используется для:
  * - Отслеживания текущей активной страницы
  * - Хранения выбранных пользователем проблем в опросе
  * - Управления навигацией между страницами
  */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useI18n } from './src/hooks/useI18n';
 import { CompactLanguageSwitcher } from './components/LanguageSwitcher';
 
@@ -60,6 +60,9 @@ import { CompactLanguageSwitcher } from './components/LanguageSwitcher';
  */
 import Component002OnboardingPage01 from './imports/002OnboardingPage01'; // Первая страница онбординга (приветствие)
 import Component004HomeMainPage from './imports/004HomeMainPage'; // Главная страница приложения
+
+// Telegram Mini Apps SDK
+import { init as initTelegramSdk, isTMA, viewport } from '@telegram-apps/sdk';
 
 /**
  * =====================================================================================
@@ -90,6 +93,34 @@ export default function App() {
   
   // Инициализация i18n
   const { t, isReady } = useI18n();
+
+  // Инициализация Telegram Mini Apps SDK: полноэкранный режим и монтирование viewport
+  useEffect(() => {
+    void (async () => {
+      try {
+        if (await isTMA()) {
+          initTelegramSdk();
+
+          if (viewport.mount.isAvailable()) {
+            await viewport.mount();
+            viewport.expand();
+          }
+
+          if (viewport.requestFullscreen.isAvailable()) {
+            try {
+              await viewport.requestFullscreen();
+            } catch {
+              // ignore fullscreen errors (platform restrictions)
+            }
+          }
+        }
+      } catch (error) {
+        // Безопасно игнорируем, если не в среде Telegram Mini App
+        console.warn('Telegram SDK initialization skipped', error);
+      }
+    })();
+    return undefined;
+  }, []);
   
   // Показать загрузку пока i18n не готов
   if (!isReady) {
